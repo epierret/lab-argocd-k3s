@@ -1,2 +1,40 @@
-# Étapes 3 et 5 : Application Argo CD pointant vers deploy/.
-# Étape 4 : syncPolicy (selfHeal, prune).
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-lab-app
+  # You'll usually want to add your resources to the argocd namespace.
+  namespace: argocd
+  # Add this finalizer ONLY if you want these to cascade delete.
+  finalizers:
+    # The default behaviour is foreground cascading deletion
+    - resources-finalizer.argocd.argoproj.io
+    # Alternatively, you can use background cascading deletion
+    # - resources-finalizer.argocd.argoproj.io/background
+  # Add labels to your application object.
+  labels:
+    name: guestbook
+spec:
+  # The project the application belongs to.
+  project: default
+
+  # Source of the application manifests
+  source:
+    repoURL: https://github.com/epierret/lab-argocd-k3s.git
+      # Can point to either a Helm chart repo or a git repo.
+    targetRevision: HEAD  # For Helm, this refers to the chart version.
+    path: deploy/base  # This has no meaning for Helm charts pulled directly from a Helm repo instead of git.
+
+
+  # Destination cluster and namespace to deploy the application
+  destination:
+    # cluster API URL
+    server: https://kubernetes.default.svc
+    # or cluster name
+    # name: in-cluster
+    # The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace
+    namespace: argocd
+  syncPolicy:
+      enabled: true # Enables automated syncing of the application ( true by default ).
+      prune: false # Specifies if resources should be pruned during auto-syncing ( false by default ).
+      selfHeal: true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected ( false by default ).
+      allowEmpty: false # Allows deleting all application resources during automatic syncing ( false by default ).
