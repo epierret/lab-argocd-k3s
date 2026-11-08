@@ -1,0 +1,2 @@
+# Étapes 3 et 5 : Application Argo CD pointant vers deploy/.
+# Étape 4 : syncPolicy (selfHeal, prune).

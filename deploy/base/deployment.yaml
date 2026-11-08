@@ -1,0 +1,2 @@
+# Étape 5 : Deployment de l'app (image, port 8080, MESSAGE depuis le ConfigMap).
+# Étape 7 : montage du PVC. Étape 9 : durcissement.

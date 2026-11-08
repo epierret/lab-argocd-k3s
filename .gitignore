@@ -1,0 +1,16 @@
+# Secrets et configuration locale : ne jamais committer
+.env
+*.env
+kubeconfig
+*.kubeconfig
+*.pem
+*.key
+secrets/
+*secret*.yaml
+
+# Python
+__pycache__/
+*.pyc
+
+# Captures brutes (les captures publiables vont dans docs/captures/)
+docs/captures/brut/
