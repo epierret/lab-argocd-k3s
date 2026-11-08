@@ -19,5 +19,11 @@ spec:
       containers:
       - image: nginx
         name: nginx
-        resources: {}
-status: {}
+        volumeMounts:
+          - name: astro-volume
+            mountPath: /usr/share/nginx/html
+            readOnly: true
+      volumes:
+       - name: astro-volume
+         configMap:
+           name: astro-page        
