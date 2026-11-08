@@ -1,1 +1,28 @@
-# Étape 5 : Service NodePort vers le port 8080 du pod.
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2026-11-08T22:52:13Z"
+  labels:
+    app: test-argo
+  name: test-argo-svc
+  namespace: argocd
+  resourceVersion: "1393138"
+  uid: 75f7d2df-5cbf-46a2-9a7c-b937ae308872
+spec:
+  clusterIP: 10.43.49.23
+  clusterIPs:
+  - 10.43.49.23
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: test-argo
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
