@@ -1,0 +1,9 @@
+apiVersion: space.lab.example.com/v1alpha1
+kind: Planet
+metadata:
+  labels:
+    app.kubernetes.io/name: planet-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: planet-sample
+spec:
+  # TODO(user): Add fields here

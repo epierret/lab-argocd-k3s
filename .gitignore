@@ -14,3 +14,4 @@ __pycache__/
 
 # Captures brutes (les captures publiables vont dans docs/captures/)
 docs/captures/brut/
+planet-operator/bin/

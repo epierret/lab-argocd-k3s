@@ -1,0 +1,4 @@
+## Append samples of your project ##
+resources:
+- space_v1alpha1_planet.yaml
+# +kubebuilder:scaffold:manifestskustomizesamples

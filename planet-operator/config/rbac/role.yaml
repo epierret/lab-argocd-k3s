@@ -1,0 +1,32 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: manager-role
+rules:
+- apiGroups:
+  - space.lab.example.com
+  resources:
+  - planets
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - space.lab.example.com
+  resources:
+  - planets/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - space.lab.example.com
+  resources:
+  - planets/status
+  verbs:
+  - get
+  - patch
+  - update
